@@ -1,4 +1,6 @@
-import { createContext, ReactNode, SetStateAction, useContext, useState } from "react";
+import { createContext, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+
+import Cookies from 'js-cookie';
 
 interface TasksListProviderProps{
   children: ReactNode;
@@ -18,6 +20,13 @@ export const TasksListContext = createContext<TasksListContextData>({} as TasksL
 
 export function TasksListProvider({children}:TasksListProviderProps){
   const [list, setList] = useState<Task[]>([]);
+
+  useEffect(() => {
+    if(list !== []){
+      Cookies.set('list',JSON.stringify(list));
+    }
+  },[list]);
+
   return(
     <TasksListContext.Provider value={{list , setList}}>
       {children}

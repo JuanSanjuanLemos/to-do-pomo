@@ -1,11 +1,20 @@
+import Cookies from "js-cookie";
+import { useEffect } from "react";
 import { useModal } from "../../hooks/useModal";
 import { useTaskList } from "../../hooks/useTasksList";
-import { NewTaskForm } from "../NewTaskForm";
 import { Task } from "../Task";
 import { Block } from "./style";
 
 export function BlockList() {
   const {list, setList} = useTaskList();
+  useEffect(()=>{
+    const listStr = Cookies.get('list');
+    if(listStr){
+      setList(JSON.parse(listStr));
+    }
+  },[])
+  // const listCookies = JSON.parse(Cookies.get('list'));
+  // listCookies && setList(JSON.parse(listCookies));
   const {handleFormInModal, handleOpenModal} = useModal();
   return (
     <Block>

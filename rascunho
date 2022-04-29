@@ -1,8 +1,0 @@
-criar component pro botão ativo
-
-function:
-  start
-  resetar ciclo
-  voltar para seleção caso o tempo seja 0
-
-criar component de voltar para seleção

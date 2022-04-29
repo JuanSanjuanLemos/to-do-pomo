@@ -16,29 +16,28 @@ export const Block = styled.div`
 
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-  .tasks{
+  .tasks {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
     height: 250px;
 
     overflow-y: scroll;
-
   }
 
-  .none-task{
-    color:#c3c3c3;
+  .none-task {
+    color: #c3c3c3;
     font-size: 2rem;
     font-weight: 500;
     text-align: center;
     margin-top: 30%;
   }
 
-  .wrapper-buttons{
+  .wrapper-buttons {
     display: flex;
     justify-content: space-between;
 
-    .list-actions{
+    .list-actions {
       font-weight: 600;
       font-size: 1.2rem;
       color: #fff;
@@ -46,15 +45,20 @@ export const Block = styled.div`
       border-radius: 6px;
       background-color: var(--green);
       padding: 0.8rem 2rem;
-  
-      &.-clear{
+      transition: all 0.15s linear;
+
+      &:hover {
+        filter: brightness(0.8);
+        transform: scale(1.01);
+      }
+
+      &.-clear {
         background-color: var(--red);
-        &:disabled{
+        &:disabled {
           filter: brightness(0.6);
           cursor: not-allowed;
         }
       }
     }
   }
-
 `;

@@ -1,12 +1,8 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useTimer } from "../../hooks/useTimer";
 import { Container } from "./style";
 
-interface TimerProps {
-  time: number;
-}
-
-export function Timer({ time }: TimerProps) {
+export function Timer() {
   const {
     setTimeCurrent,
     timeCurrent,
@@ -19,6 +15,7 @@ export function Timer({ time }: TimerProps) {
     initalTime,
     setInitalTime
   } = useTimer();
+  const alert = new Audio('/audio/notification.mp3');
 
   useEffect(() => {
     if(isActive && timeCurrent> 0){
@@ -28,7 +25,7 @@ export function Timer({ time }: TimerProps) {
     }else if(isActive && timeCurrent === 0){
       setIsActive(false);
       setInitalTime(0);
-
+      alert.play();
     }else{
       setTimeCurrent(initalTime);
       setIsActive(false);

@@ -1,14 +1,10 @@
 import { useTimer } from "../../hooks/useTimer"
 import { Button } from "./style"
 
-interface ButtonStartCicleProps{
-  initalTime: number;
-}
-
-export function ButtonStartCicle({initalTime}:ButtonStartCicleProps){
+export function ButtonStartCicle(){
   const {isActive,setIsActive, timeCurrent, setIsTimerOpen} = useTimer();
   return(
-    isActive ? <Button onClick={()=>{setIsActive(false)}} className="-cancel">Cancelar ciclo</Button>
+    isActive ? <Button onClick={()=>{setIsActive(false)}} className="-cancel">Reiniciar ciclo</Button>
     : 
     (timeCurrent > 0 ? <Button onClick={()=>{setIsActive(true)}} className="">Iniciar ciclo</Button> 
     :

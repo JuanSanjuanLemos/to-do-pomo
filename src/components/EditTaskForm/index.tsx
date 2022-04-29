@@ -3,22 +3,26 @@ import { useModal } from "../../hooks/useModal";
 import { useTaskList } from "../../hooks/useTasksList";
 import { Form } from "./style";
 
+interface Task {
+  id: number;
+  task: string;
+}
 
 export function EditTaskForm(){
   const [newTask, setNewTask] = useState('');
-  const {list, setList} = useTaskList();
+  const {list,setList} = useTaskList();
   const {handleCloseModal, itemInEdit} =useModal();
 
   function handleEditTask(event: FormEvent){
     event.preventDefault();
-    
-    list.map((task) => {
-      if(task.id === itemInEdit){
-        task.task = newTask;
-      }
-    });
-    
+    const newList = list.filter(task => task.id !== itemInEdit);
+    let itemEdit: Task[] | Task = list.filter(task => task.id === itemInEdit);
 
+    itemEdit = itemEdit[0];
+    itemEdit.task = newTask;
+    newList.push(itemEdit); 
+
+    setList(newList);
     setNewTask('');
     handleCloseModal();
 }

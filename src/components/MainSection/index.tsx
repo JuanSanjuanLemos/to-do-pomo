@@ -9,11 +9,9 @@ import { Section } from "./style";
 export function MainSection() {
   const {
     setTimeCurrent,
-    timeCurrent,
     setIsTimerOpen,
     isTimerOpen,
     setInitalTime,
-    initalTime,
   } = useTimer();
   function handleOpenTimer(time: number) {
     setInitalTime(time);
@@ -34,7 +32,7 @@ export function MainSection() {
               </button>
               <button
                 className="start-period"
-                onClick={() => handleOpenTimer(300)}
+                onClick={() => handleOpenTimer(5)}
               >
                 Pausa curta
               </button>
@@ -47,12 +45,12 @@ export function MainSection() {
             </div>
           ) : (
             <>
-              <span className="arrow-back">
+              <button className="arrow-back" onClick={()=>setIsTimerOpen(false)}>
                 <IoMdArrowRoundBack />
-              </span>
+              </button>
               <div className="content">
-                <Timer time={timeCurrent} />
-                <ButtonStartCicle initalTime={initalTime} />
+                <Timer />
+                <ButtonStartCicle />
               </div>
             </>
           )}
