@@ -17,12 +17,13 @@ export function Timer() {
   } = useTimer();
   const alert = new Audio('/audio/notification.mp3');
 
-  useEffect(() => {
+  function actionsTimer(){
     if(isActive && timeCurrent> 0){
       setTimeout(()=>{
         setTimeCurrent(timeCurrent - 1);
       },1000)
-    }else if(isActive && timeCurrent === 0){
+    }
+    else if(isActive && timeCurrent === 0){
       setIsActive(false);
       setInitalTime(0);
       alert.play();
@@ -30,7 +31,11 @@ export function Timer() {
       setTimeCurrent(initalTime);
       setIsActive(false);
     }
-  }, [timeCurrent, isActive]);
+  }
+
+  useEffect(() => {
+    actionsTimer();
+  }, [timeCurrent, isActive,]);
 
   return (
     <Container>

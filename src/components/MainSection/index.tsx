@@ -32,7 +32,7 @@ export function MainSection() {
               </button>
               <button
                 className="start-period"
-                onClick={() => handleOpenTimer(5)}
+                onClick={() => handleOpenTimer(300)}
               >
                 Pausa curta
               </button>

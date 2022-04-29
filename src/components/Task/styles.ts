@@ -56,7 +56,7 @@ export const StyledCheckbox = styled.label`
 
   cursor: pointer;
 
-  img{
+  .wrapper-img{
     display: ${(props) => (props["aria-checked"] ? "flex" : "none")};
     filter: invert(75%) sepia(11%) saturate(6042%) hue-rotate(30deg) brightness(105%) contrast(68%);
   }

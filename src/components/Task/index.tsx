@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { useState } from "react";
 import { BsPencil, BsTrash } from "react-icons/bs";
 import { useModal } from "../../hooks/useModal";
@@ -11,30 +12,34 @@ interface TaskProps {
 
 export function Task({ id, task }: TaskProps) {
   const [isChecked, setIsChecked] = useState(false);
-  const {list, setList} = useTaskList();
+  const { list, setList } = useTaskList();
 
-  const {handleOpenModal, handleFormInModal, handleItemInEdit} = useModal();
+  const { handleOpenModal, handleFormInModal, handleItemInEdit } = useModal();
 
   function handleCheckboxChange() {
     setIsChecked(!isChecked);
   }
 
-  function handleDeleteTask(){
-    const newList = list.filter((task)=> task.id !== id);
+  function handleDeleteTask() {
+    const newList = list.filter((task) => task.id !== id);
     setList(newList);
   }
   return (
-    <Box id={`${id}`} aria-checked={isChecked} >
+    <Box id={`${id}`} aria-checked={isChecked}>
       <Checkbox onClick={handleCheckboxChange}>
         <HiddenCheckbox
-        onChange={handleCheckboxChange}
-        aria-checked={isChecked} />
+          onChange={handleCheckboxChange}
+          aria-checked={isChecked}
+        />
         <StyledCheckbox aria-checked={isChecked}>
-        <img
+          <div className="wrapper-img">
+            <Image
               alt="chek icon"
-              style={{width: '15px'}}
-              src='/images/check.png'
-          />
+              width={15}
+              height={15}
+              src="/images/check.png"
+            />
+          </div>
         </StyledCheckbox>
         <Text aria-checked={isChecked}> {task} </Text>
       </Checkbox>
@@ -43,13 +48,15 @@ export function Task({ id, task }: TaskProps) {
           <BsTrash />
         </button>
         <button>
-          <BsPencil onClick={()=>{
-            handleItemInEdit(id)
-            handleOpenModal()
-            handleFormInModal('editTask')
-          }} />
+          <BsPencil
+            onClick={() => {
+              handleItemInEdit(id);
+              handleOpenModal();
+              handleFormInModal("editTask");
+            }}
+          />
         </button>
       </div>
-    </ Box>
+    </Box>
   );
 }

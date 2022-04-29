@@ -6,16 +6,18 @@ import { Task } from "../Task";
 import { Block } from "./style";
 
 export function BlockList() {
-  const {list, setList} = useTaskList();
-  useEffect(()=>{
-    const listStr = Cookies.get('list');
-    if(listStr){
-      setList(JSON.parse(listStr));
+  const { list, setList } = useTaskList();
+  const listStr = Cookies.get("list");
+
+  useEffect(() => {
+    if(listStr !== undefined && JSON.parse(listStr).length > 0 ){
+      if(listStr !== JSON.stringify(list)){
+        setList(JSON.parse(listStr));
+      }
     }
-  },[])
-  // const listCookies = JSON.parse(Cookies.get('list'));
-  // listCookies && setList(JSON.parse(listCookies));
-  const {handleFormInModal, handleOpenModal} = useModal();
+  }, [listStr]);
+
+  const { handleFormInModal, handleOpenModal } = useModal();
   return (
     <Block>
       <div className="tasks">
@@ -29,10 +31,15 @@ export function BlockList() {
       </div>
 
       <div className="wrapper-buttons">
-        <button className="list-actions" onClick={()=> {
-          handleFormInModal('newTask')
-          handleOpenModal()
-          }}>Nova tarefa</button>
+        <button
+          className="list-actions"
+          onClick={() => {
+            handleFormInModal("newTask");
+            handleOpenModal();
+          }}
+        >
+          Nova tarefa
+        </button>
 
         <button
           className="list-actions -clear"
@@ -41,7 +48,6 @@ export function BlockList() {
         >
           Limpar lista
         </button>
-
       </div>
     </Block>
   );
