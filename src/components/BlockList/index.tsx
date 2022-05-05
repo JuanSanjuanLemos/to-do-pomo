@@ -6,13 +6,15 @@ import { Task } from "../Task";
 import { Block } from "./style";
 
 export function BlockList() {
-  const { list, setList } = useTaskList();
+  const { list, setList, setListCookie } = useTaskList();
   const listStr = Cookies.get("list");
 
   useEffect(() => {
     if(listStr !== undefined && JSON.parse(listStr).length > 0 ){
-      if(listStr !== JSON.stringify(list)){
+      if(JSON.parse(listStr) !== list){
         setList(JSON.parse(listStr));
+        console.log(list);
+        setListCookie(JSON.parse(listStr))
       }
     }
   }, [listStr]);
@@ -23,7 +25,7 @@ export function BlockList() {
       <div className="tasks">
         {list.length > 0 ? (
           list.map((task) => {
-            return <Task key={task.id} id={task.id} task={task.task} />;
+            return <Task key={task.id} id={task.id} task={task.task} isComplete={task.isComplete} />;
           })
         ) : (
           <p className="none-task">Adicione uma tarefa</p>

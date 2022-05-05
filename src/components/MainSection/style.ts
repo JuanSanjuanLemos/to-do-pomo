@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Section = styled.section`
   max-width: 1440px;
-  margin: auto;
+  margin: 3rem auto;
   padding: 0 1rem;
 
   .content {
@@ -11,7 +11,8 @@ export const Section = styled.section`
 
     display: flex;
     justify-content: space-between;
-
+    flex-wrap: wrap;
+    gap: 3rem;
     .start-period {
       background-color: var(--blue);
       width: 100%;
@@ -27,6 +28,13 @@ export const Section = styled.section`
         filter: brightness(0.8);
         transform: scale(1.01);
       }
+    }
+
+    .content-timer{
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      justify-content: space-between;
     }
   }
 `;

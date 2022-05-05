@@ -1,6 +1,4 @@
-import { Children, createContext, ReactNode, SetStateAction, useContext, useState } from "react";
-import { IoCloseSharp } from "react-icons/io5";
-import Modal from 'react-modal';
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface ModalProviderProps{
   children: ReactNode;

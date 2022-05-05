@@ -4,14 +4,15 @@ export const Container = styled.div`
   width: 100%;
   max-width: 480px;
   height: 420px;
-  padding: 1.875rem 2.5rem;
+  padding: 1.875rem 1.2rem;
   background-color: #fff;
 
   border-radius: 0.75rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
   display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
 
   .arrow-back {
     font-size: 2rem;

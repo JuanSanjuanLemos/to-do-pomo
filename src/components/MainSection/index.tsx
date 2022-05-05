@@ -23,7 +23,7 @@ export function MainSection() {
       <div className="content">
         <Block>
           {!isTimerOpen ? (
-            <div className="content">
+            <>
               <button
                 className="start-period"
                 onClick={() => handleOpenTimer(1500)}
@@ -42,13 +42,13 @@ export function MainSection() {
               >
                 Pausa longa
               </button>
-            </div>
+            </>
           ) : (
             <>
               <button className="arrow-back" onClick={()=>setIsTimerOpen(false)}>
                 <IoMdArrowRoundBack />
               </button>
-              <div className="content">
+              <div className="content-timer">
                 <Timer />
                 <ButtonStartCicle />
               </div>

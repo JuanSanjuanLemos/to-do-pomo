@@ -12,9 +12,9 @@ export function NewTaskForm(){
     event.preventDefault();
     const newTask = {
       id: list.length + 1,
-      task: task
+      task: task,
+      isComplete: false
     }
-    
     setList([...list, newTask]);
     setTask('');
     
@@ -27,7 +27,7 @@ export function NewTaskForm(){
         <label>
           Nova tarefa:
         </label>
-        <input type='text' maxLength={30} placeholder='Máximo de 30 caracteres' value={task} onChange={event => setTask(event.target.value)} required />
+        <input type='text' maxLength={40} placeholder='Máximo de 30 caracteres' value={task} onChange={event => setTask(event.target.value)} required />
       </div>
 
       <button type="submit">Adicionar Tarefa</button>

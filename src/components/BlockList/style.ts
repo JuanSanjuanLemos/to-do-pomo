@@ -4,8 +4,9 @@ export const Block = styled.div`
   width: 100%;
   max-width: 480px;
   height: 420px;
+  margin: auto;
 
-  padding: 1.875rem 2.5rem;
+  padding: 1.875rem 1.2rem;
   background-color: #fff;
 
   display: flex;
@@ -36,15 +37,15 @@ export const Block = styled.div`
   .wrapper-buttons {
     display: flex;
     justify-content: space-between;
-
+    gap: 1rem;
     .list-actions {
       font-weight: 600;
       font-size: 1.2rem;
       color: #fff;
-      min-width: 10rem;
+      max-width: 15rem;
       border-radius: 6px;
       background-color: var(--green);
-      padding: 0.8rem 2rem;
+      padding: 0.8rem 1.5rem;
       transition: all 0.15s linear;
 
       &:hover {

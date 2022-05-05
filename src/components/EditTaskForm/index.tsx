@@ -6,6 +6,7 @@ import { Form } from "./style";
 interface Task {
   id: number;
   task: string;
+  isComplete: boolean;
 }
 
 export function EditTaskForm(){
@@ -33,7 +34,7 @@ export function EditTaskForm(){
         <label>
           Nova tarefa:
         </label>
-        <input type='text' maxLength={30} placeholder='Máximo de 30 caracteres' value={newTask} onChange={event => setNewTask(event.target.value)} required />
+        <input type='text' maxLength={40} placeholder='Máximo de 30 caracteres' value={newTask} onChange={event => setNewTask(event.target.value)} required />
       </div>
 
       <button type="submit">Editar Tarefa</button>
