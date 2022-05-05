@@ -13,7 +13,6 @@ export function BlockList() {
     if(listStr !== undefined && JSON.parse(listStr).length > 0 ){
       if(JSON.parse(listStr) !== list){
         setList(JSON.parse(listStr));
-        console.log(list);
         setListCookie(JSON.parse(listStr))
       }
     }
@@ -45,7 +44,10 @@ export function BlockList() {
 
         <button
           className="list-actions -clear"
-          onClick={() => setList([])}
+          onClick={() => {
+            setList([]);
+            Cookies.set('list', JSON.stringify([]))
+          }}
           disabled={list.length === 0 && true}
         >
           Limpar lista
