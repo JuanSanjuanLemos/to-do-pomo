@@ -35,6 +35,7 @@ export function Task({ id, task, isComplete }: TaskProps) {
   function handleDeleteTask() {
     const newList = list.filter((t) => t.id !== id);
     setList(newList);
+    Cookies.set('list',JSON.stringify(newList));
   }
   return (
     <Box id={`${id}`} aria-checked={isChecked}>

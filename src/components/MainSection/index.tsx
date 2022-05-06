@@ -12,6 +12,7 @@ export function MainSection() {
     setIsTimerOpen,
     isTimerOpen,
     setInitalTime,
+    setIsActive
   } = useTimer();
   function handleOpenTimer(time: number) {
     setInitalTime(time);
@@ -45,7 +46,10 @@ export function MainSection() {
             </>
           ) : (
             <>
-              <button className="arrow-back" onClick={()=>setIsTimerOpen(false)}>
+              <button className="arrow-back" onClick={()=>{
+                setIsTimerOpen(false)
+                setIsActive(false)
+              }}>
                 <IoMdArrowRoundBack />
               </button>
               <div className="content-timer">

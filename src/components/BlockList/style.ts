@@ -23,7 +23,7 @@ export const Block = styled.div`
     gap: 0.8rem;
     height: 250px;
 
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   .none-task {
